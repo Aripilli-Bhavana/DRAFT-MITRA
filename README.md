@@ -155,8 +155,4 @@ MIT License — Open-source and community driven
 
 Contributions are welcome! Please fork the repo, open pull requests, and check out the contributing guide.
 
-## 🛌 Support
 
-* GitHub: [Issues](https://github.com/your-repo/issues)
-* Email: [support@draftmitra.in](mailto:support@draftmitra.in)
-* Wiki: [Project Docs](https://github.com/your-repo/wiki)
