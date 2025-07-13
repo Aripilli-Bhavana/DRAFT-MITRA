@@ -1,170 +1,131 @@
-# DraftMitra - AI-Powered Government Form Assistant
+# DraftMitra – AI-Powered Government Form Assistant
 
 ## 🎯 Overview
-DraftMitra is a full-stack AI-powered web application designed to simplify the process of filling Indian government forms. Built for the "Generative AI & LLMs for Governance" hackathon theme, it uses local LLMs to provide step-by-step guidance while ensuring data privacy.
+
+DraftMitra is an AI-powered full-stack web application that simplifies the process of filling Indian government forms. Built for the "Generative AI & LLMs for Governance" hackathon, it leverages local LLMs to guide users step-by-step while ensuring data privacy through offline processing.
 
 ## 🌟 Key Features
-- **Smart PDF Analysis**: Upload government forms and get AI-powered analysis
-- **Step-by-Step Guidance**: Interactive AI assistant guides users through each form field
-- **Multilingual Support**: Hindi and English support with real-time translation
-- **Local LLM Integration**: Uses Ollama for offline processing (Mistral/LLaMA 3)
-- **Privacy-First**: All processing happens locally, no data leaves your device
-- **Responsive Design**: Modern, accessible UI optimized for all devices
-- **Dark/Light Mode**: Full theme support with user preference persistence
+
+* **Form Analysis**: Upload government forms (PDF) and get structured AI-driven analysis
+* **Interactive Assistant**: Field-by-field guidance through an intuitive AI chat interface
+* **Multilingual Support**: Real-time translation between Hindi and English
+* **Local LLMs**: Works offline using models like Mistral and LLaMA 3 via Ollama
+* **Privacy-First**: User data stays entirely on-device
+* **Responsive UI**: Mobile-first design with dark/light mode support
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **React 18** with TypeScript
-- **Tailwind CSS** for styling
-- **Lucide React** for icons
-- **Context API** for state management
 
-### Backend (Ready for Integration)
-- **FastAPI** for REST API
-- **Ollama** for local LLM integration
-- **pdfplumber** for PDF text extraction
-- **ReportLab** for PDF generation
-- **Python** with async/await support
+* React 18 with TypeScript
+* Tailwind CSS for utility-first styling
+* Lucide React for modern icons
+* Context API for global state
+
+### Backend
+
+* FastAPI for high-performance APIs
+* Python with async support
+* Ollama for running local LLMs
+* pdfplumber for text extraction
+* ReportLab for PDF generation
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-- Node.js 18+ and npm
-- Python 3.8+ (for backend)
-- Ollama installed locally
+
+* Node.js 18+
+* Python 3.8+
+* Ollama installed locally
 
 ### Frontend Setup
-```bash
-# Install dependencies
-npm install
 
-# Start development server
+```bash
+npm install
 npm run dev
 ```
 
-### Backend Setup (Integration Ready)
+### Backend Setup
+
 ```bash
-# Install Ollama
-curl -fsSL https://ollama.ai/install.sh | sh
-
-# Pull required models
-ollama pull mistral
-ollama pull llama3
-
-# Install Python dependencies
+# Install dependencies
 pip install fastapi uvicorn pdfplumber reportlab python-multipart
 
-# Start backend server
+# Run backend
 uvicorn main:app --reload --port 8000
+
+# Install and run LLMs
+curl -fsSL https://ollama.ai/install.sh | sh
+ollama pull mistral
+ollama pull llama3
 ```
 
-## 📁 Project Structure
+## 📂 Project Structure
+
+### Frontend
 
 ```
 src/
-├── components/           # React components
-│   ├── Header.tsx       # Navigation and controls
-│   ├── FileUploader.tsx # PDF upload interface
-│   └── FormAssistant.tsx # AI chat interface
-├── context/             # React contexts
-│   ├── LanguageContext.tsx # i18n support
-│   ├── ThemeContext.tsx    # Dark/light mode
-│   └── FormContext.tsx     # Form state management
-├── utils/               # Utility functions
-│   ├── pdfUtils.ts     # PDF processing
-│   └── aiUtils.ts      # AI/LLM integration
-└── App.tsx             # Main application component
+├── components/        # UI Components
+├── context/           # Global contexts (Theme, Language, Form)
+├── utils/             # Helper functions
+└── App.tsx            # Main App logic
 ```
 
-## 🔧 Backend Structure (Ready for Integration)
+### Backend
 
 ```
 backend/
-├── main.py              # FastAPI application
-├── routers/
-│   ├── upload.py       # File upload endpoints
-│   ├── ai.py          # AI processing endpoints
-│   └── forms.py       # Form management
-├── services/
-│   ├── pdf_service.py  # PDF extraction
-│   ├── ai_service.py   # Ollama integration
-│   └── translation.py # Language processing
-├── models/
-│   └── schemas.py      # Pydantic models
-└── utils/
-    ├── config.py       # Configuration
-    └── helpers.py      # Utility functions
+├── main.py             # FastAPI entry point
+├── routers/            # API endpoints
+├── services/           # Business logic (PDF, AI, translation)
+├── models/             # Pydantic schemas
+└── utils/              # Configs and helpers
 ```
 
-## 🌐 API Endpoints (Ready for Implementation)
+## 🌐 API Overview (Coming Soon)
 
 ```
-POST /api/upload         # Upload PDF form
-GET  /api/extract        # Extract form data
-POST /api/chat          # AI assistant chat
-POST /api/translate     # Translate text
-POST /api/generate      # Generate filled PDF
-GET  /api/health        # Health check
+POST /api/upload       - Upload government form (PDF)
+GET  /api/extract      - Extract data from form
+POST /api/chat         - LLM-based guidance
+POST /api/translate    - Translate between Hindi/English
+POST /api/generate     - Generate filled PDF
+GET  /api/health       - Health check
 ```
 
-## 🎨 Design Features
+## 🌍 Use Cases
 
-- **Indian Government Theme**: Saffron, white, and green color palette
-- **Accessibility**: WCAG 2.1 AA compliant with proper contrast ratios
-- **Responsive**: Mobile-first design with breakpoints for all devices
-- **Micro-interactions**: Smooth animations and loading states
-- **Typography**: Optimized for readability in multiple languages
+* Citizens struggling with form complexity
+* NRIs or those unfamiliar with regional languages
+* Elderly requiring guided form completion
+* NGOs and social workers assisting communities
+* Panchayat officials digitizing workflows
+
+## 💼 Supported Forms
+
+* Aadhaar Enrolment & Update
+* RTI Applications
+* PAN & Passport Applications
+* Income, Caste & Domicile Certificates
 
 ## 🔒 Privacy & Security
 
-- **Local Processing**: All AI processing happens on your device
-- **No Data Collection**: Forms and personal data never leave your computer
-- **Offline Capable**: Works without internet connection (after initial setup)
-- **Open Source**: Transparent and auditable codebase
+* All processing is local — no internet required after setup
+* No data leaves the device
+* No third-party analytics or cloud APIs
 
-## 🌍 Supported Languages
-
-- **English**: Full interface and form support
-- **Hindi**: Native support with Devanagari script
-- **Extensible**: Architecture ready for additional Indian languages
-
-## 📱 Supported Forms
-
-Currently optimized for common Indian government forms:
-- RTI (Right to Information) applications
-- Income certificates
-- Caste certificates
-- Aadhar update forms
-- PAN applications
-- Passport applications
-
-## 🎯 Target Users
-
-- **Citizens**: Confused by complex government forms
-- **NRIs**: Unfamiliar with Hindi or local processes
-- **Elderly**: Need step-by-step guidance
-- **Students**: Filing applications independently
-- **NGOs**: Helping community members
-- **Panchayat Staff**: Assisting villagers
-
-## 🏆 Hackathon Benefits
-
-- **Reduces Corruption**: Eliminates middlemen who charge for form filling
-- **Increases Transparency**: Clear, step-by-step process
-- **Improves Accessibility**: Supports multiple languages and disabilities
-- **Enhances Digital India**: Promotes self-reliance in digital governance
-- **Privacy-First**: Local processing ensures data security
-
-## 🚀 Deployment
+## 🚜 Deployment
 
 ### Frontend (Netlify/Vercel)
+
 ```bash
 npm run build
-# Deploy dist/ folder to your hosting provider
+# Deploy the `dist/` directory
 ```
 
 ### Backend (Docker)
+
 ```dockerfile
 FROM python:3.9-slim
 WORKDIR /app
@@ -174,29 +135,28 @@ COPY . .
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
-## 🔮 Future Enhancements
+## 🌈 Vision
 
-- **OCR Integration**: Extract text from scanned documents
-- **Voice Input**: Support for voice-based form filling
-- **Blockchain**: Secure form submission and verification
-- **Regional Languages**: Support for Tamil, Telugu, Bengali, etc.
-- **Government Integration**: Direct submission to government portals
+Empower every Indian citizen to complete government paperwork with ease, confidence, and privacy using AI.
 
-## 📄 License
+## 🚀 Future Plans
 
-MIT License - Open source and free for all users
+* OCR for scanned form support
+* Voice input and screen reading
+* Regional language support
+* Blockchain-based form authentication
+* Direct integration with government portals
+
+## 📅 License
+
+MIT License — Open-source and community driven
 
 ## 🤝 Contributing
 
-Contributions welcome! Please read our contributing guidelines and submit pull requests.
+Contributions are welcome! Please fork the repo, open pull requests, and check out the contributing guide.
 
-## 📞 Support
+## 🛌 Support
 
-For issues and questions:
-- GitHub Issues: [Create an issue](https://github.com/your-repo/issues)
-- Email: support@draftmitra.in
-- Documentation: [Wiki](https://github.com/your-repo/wiki)
-
----
-
-Built with ❤️ for Digital India 🇮🇳
+* GitHub: [Issues](https://github.com/your-repo/issues)
+* Email: [support@draftmitra.in](mailto:support@draftmitra.in)
+* Wiki: [Project Docs](https://github.com/your-repo/wiki)
